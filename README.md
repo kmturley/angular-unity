@@ -23,6 +23,7 @@ To communicate between JavaScript and Unity you need a few things:
 
 1) Create a Unity Project with GameObject > Controller.cs:
 
+```
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
@@ -47,14 +48,17 @@ To communicate between JavaScript and Unity you need a few things:
 
         }
     }
+```
 
 2) Add a file to the Unity project at: /Assets/Plugins/WebInterface.jslib containing:
 
+```
     mergeInto(LibraryManager.library, {
     SendMessageToWeb: function (str) {
         window.receiveMessageFromUnity(str);
     },
     });
+```
 
 3) Build the project as WebGL so that it creates the files:
 
