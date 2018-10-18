@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <h1>Angular Unity</h1>\n  <p>Example showing a unity view inside Angular</p>\n</div>\n<app-unity appLocation=\"../assets/demo/demo.json\"></app-unity>"
+module.exports = "<div>\n  <h1>Angular Unity</h1>\n  <p>Example showing a unity view inside Angular</p>\n</div>\n<app-unity appLocation=\"https://kmturley.github.io/angular-unity/dist/assets/demo/demo.json\"></app-unity>"
 
 /***/ }),
 
