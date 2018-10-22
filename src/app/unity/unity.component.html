@@ -1,2 +1,3 @@
 <div id="gameContainer" class="game-container"></div>
-<button (click)="sendMessageToUnity('MainObject', 'ReceiveMessageFromWeb', 'Hello from Web')">Send Message</button>
+<button (click)="sendMessageToUnity('Game Controller', 'AddScore', 1)">Add Score</button>
+<button (click)="sendMessageToUnity('Game Controller', 'GameOver')">End Game</button>
