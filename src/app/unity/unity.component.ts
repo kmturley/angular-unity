@@ -21,7 +21,13 @@ export class UnityComponent implements OnInit {
     window['UnityLoader'] = UnityLoader;
     window['UnityProgress'] = UnityProgress;
     window['receiveMessageFromUnity'] = this.receiveMessageFromUnity;
-    this.gameInstance = UnityLoader.instantiate('gameContainer', this.appLocation);
+    if (this.appLocation) {
+      this.loadProject(this.appLocation);
+    }
+  }
+
+  public loadProject(path) {
+    this.gameInstance = UnityLoader.instantiate('gameContainer', path);
   }
 
   public sendMessageToUnity(objectName: string, methodName: string, messageValue: string) {

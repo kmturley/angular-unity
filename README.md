@@ -4,8 +4,6 @@ Example Angular and Unity integration using:
 * Unity
 * Angular 6.1.x
 
-Look at the [game](https://github.com/kmturley/angular-unity/tree/feature/game) branch to see a real-world example.
-
 ## Installation
 
     npm install
