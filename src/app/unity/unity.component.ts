@@ -10,7 +10,7 @@ declare var window: any;
   styleUrls: ['./unity.component.css']
 })
 export class UnityComponent implements OnInit {
-  gameInstance: any;
+  unityInstance: any;
   @Input() appLocation: String;
   @Input() appWidth: String;
   @Input() appHeight: String;
@@ -21,12 +21,18 @@ export class UnityComponent implements OnInit {
     window['UnityLoader'] = UnityLoader;
     window['UnityProgress'] = UnityProgress;
     window['receiveMessageFromUnity'] = this.receiveMessageFromUnity;
-    this.gameInstance = UnityLoader.instantiate('gameContainer', this.appLocation);
+    if (this.appLocation) {
+      this.loadProject(this.appLocation);
+    }
+  }
+
+  public loadProject(path) {
+    this.unityInstance = UnityLoader.instantiate('unityContainer', path);
   }
 
   public sendMessageToUnity(objectName: string, methodName: string, messageValue: string) {
     console.log('sendMessageToUnity', objectName, methodName, messageValue);
-    this.gameInstance.SendMessage(objectName, methodName, messageValue);
+    this.unityInstance.SendMessage(objectName, methodName, messageValue);
   }
 
   public receiveMessageFromUnity(messageValue: string) {
