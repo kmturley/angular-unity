@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".buttons {\n  margin-bottom: 1em;\n}\n\n.buttons button {\n  margin-right: 1em;\n}\n"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <h1>Angular Unity</h1>\n  <p>Example showing a unity view inside Angular</p>\n</div>\n<app-unity appLocation=\"https://kmturley.github.io/angular-unity/dist/assets/demo/demo.json\"></app-unity>"
+module.exports = "<div>\n  <h1>Angular Unity</h1>\n  <p>Example showing a unity view inside Angular</p>\n  <ul>\n    <li><a href=\"#demo\" (click)=\"load('demo')\">Demo</a></li>\n    <li><a href=\"#shooter\" (click)=\"load('shooter')\">Shooter</a></li>\n  </ul>\n  <div class=\"buttons\" *ngIf=\"project=='demo'\">\n    <button (click)=\"send('MainObject', 'ReceiveMessageFromWeb', 'Hello from Web')\">Send Message</button>\n  </div>\n  <div class=\"buttons\" *ngIf=\"project=='shooter'\">\n    <button (click)=\"send('Game Controller', 'AddScore', 1)\">Add Score</button>\n    <button (click)=\"send('Game Controller', 'GameOver')\">End Game</button>\n  </div>\n</div>\n<app-unity #unityView></app-unity>\n"
 
 /***/ }),
 
@@ -62,11 +62,24 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
-        this.title = 'angular-unity';
     }
+    AppComponent.prototype.load = function (name) {
+        this.project = name;
+        this.unityView.loadProject("https://kmturley.github.io/angular-unity/dist/assets/" + name + "/" + name + ".json");
+    };
+    AppComponent.prototype.send = function (objectName, methodName, messageValue) {
+        this.unityView.sendMessageToUnity(objectName, methodName, messageValue);
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('unityView'),
+        __metadata("design:type", Object)
+    ], AppComponent.prototype, "unityView", void 0);
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-root',
@@ -189,7 +202,7 @@ function UnityProgress(gameInstance, progress) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".game-container,\n.game-container canvas {\n    background-color: #000;\n    height: 100%;\n    margin: auto;\n    width: 100%;\n}\n"
+module.exports = ".unity-container,\n.unity-container canvas {\n    background-color: #000;\n    height: 100%;\n    margin: auto;\n    min-height: 56.25vw;\n    width: 100%;\n}\n"
 
 /***/ }),
 
@@ -200,7 +213,7 @@ module.exports = ".game-container,\n.game-container canvas {\n    background-col
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"gameContainer\" class=\"game-container\"></div>\n<button (click)=\"sendMessageToUnity('MainObject', 'ReceiveMessageFromWeb', 'Hello from Web')\">Send Message</button>"
+module.exports = "<div id=\"unityContainer\" class=\"unity-container\"></div>"
 
 /***/ }),
 
@@ -236,11 +249,16 @@ var UnityComponent = /** @class */ (function () {
         window['UnityLoader'] = _UnityLoader_js__WEBPACK_IMPORTED_MODULE_1__["UnityLoader"];
         window['UnityProgress'] = _UnityProgress_js__WEBPACK_IMPORTED_MODULE_2__["UnityProgress"];
         window['receiveMessageFromUnity'] = this.receiveMessageFromUnity;
-        this.gameInstance = _UnityLoader_js__WEBPACK_IMPORTED_MODULE_1__["UnityLoader"].instantiate('gameContainer', this.appLocation);
+        if (this.appLocation) {
+            this.loadProject(this.appLocation);
+        }
+    };
+    UnityComponent.prototype.loadProject = function (path) {
+        this.unityInstance = _UnityLoader_js__WEBPACK_IMPORTED_MODULE_1__["UnityLoader"].instantiate('unityContainer', path);
     };
     UnityComponent.prototype.sendMessageToUnity = function (objectName, methodName, messageValue) {
         console.log('sendMessageToUnity', objectName, methodName, messageValue);
-        this.gameInstance.SendMessage(objectName, methodName, messageValue);
+        this.unityInstance.SendMessage(objectName, methodName, messageValue);
     };
     UnityComponent.prototype.receiveMessageFromUnity = function (messageValue) {
         console.log('receiveMessageFromUnity', messageValue);
