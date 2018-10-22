@@ -2,8 +2,8 @@
   <h1>Angular Unity</h1>
   <p>Example showing a unity view inside Angular</p>
   <ul>
-    <li><a (click)="load('demo')">Demo</a></li>
-    <li><a (click)="load('shooter')">Shooter</a></li>
+    <li><a href="#demo" (click)="load('demo')">Demo</a></li>
+    <li><a href="#shooter" (click)="load('shooter')">Shooter</a></li>
   </ul>
   <div class="buttons" *ngIf="project=='demo'">
     <button (click)="send('MainObject', 'ReceiveMessageFromWeb', 'Hello from Web')">Send Message</button>

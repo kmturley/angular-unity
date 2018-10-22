@@ -10,7 +10,7 @@ declare var window: any;
   styleUrls: ['./unity.component.css']
 })
 export class UnityComponent implements OnInit {
-  gameInstance: any;
+  unityInstance: any;
   @Input() appLocation: String;
   @Input() appWidth: String;
   @Input() appHeight: String;
@@ -27,12 +27,12 @@ export class UnityComponent implements OnInit {
   }
 
   public loadProject(path) {
-    this.gameInstance = UnityLoader.instantiate('gameContainer', path);
+    this.unityInstance = UnityLoader.instantiate('unityContainer', path);
   }
 
   public sendMessageToUnity(objectName: string, methodName: string, messageValue: string) {
     console.log('sendMessageToUnity', objectName, methodName, messageValue);
-    this.gameInstance.SendMessage(objectName, methodName, messageValue);
+    this.unityInstance.SendMessage(objectName, methodName, messageValue);
   }
 
   public receiveMessageFromUnity(messageValue: string) {
