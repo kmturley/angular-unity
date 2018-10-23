@@ -1,8 +1,7 @@
 .unity-container,
 .unity-container canvas {
     background-color: #000;
-    height: 100%;
-    margin: auto;
-    min-height: 56.25vw;
-    width: 100%;
+    height: 600px;
+    margin: auto !important;
+    width: 960px;
 }
