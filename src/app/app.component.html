@@ -5,6 +5,7 @@
     <li><a href="#demo" (click)="load('demo')">Communication (3MB)</a></li>
     <li><a href="#shooter" (click)="load('shooter')">Game (9MB)</a></li>
     <li><a href="#demo" (click)="load('chest')">Object Viewer (18MB)</a></li>
+    <li><a href="#chair" (click)="load('chair')">Object Loader (4MB)</a></li>
     <li><a href="#forest" (click)="load('forest')">Environment (15MB)</a></li>
   </ul>
   <div class="buttons" *ngIf="project=='demo'">
@@ -13,6 +14,9 @@
   <div class="buttons" *ngIf="project=='shooter'">
     <button (click)="send('Game Controller', 'AddScore', 1)">Add Score</button>
     <button (click)="send('Game Controller', 'GameOver')">End Game</button>
+  </div>
+  <div class="buttons" *ngIf="project=='chair'">
+    <button (click)="send('ObjController', 'LoadWeb', 'http://localhost:4200/assets/chair/StreamingAssets/Chair.obj')">Load Chair</button>
   </div>
   <div class="buttons" *ngIf="project=='forest'">
     <button (click)="send('Main Camera', 'SetGravity', 1)">Low Gravity</button>
