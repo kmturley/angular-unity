@@ -41,7 +41,7 @@ module.exports = ".buttons {\n  margin-bottom: 1em;\n}\n\n.buttons button {\n  m
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <h1>Angular Unity</h1>\n  <p>Example showing a unity view inside Angular</p>\n  <ul>\n    <li><a href=\"#demo\" (click)=\"load('demo')\">Demo</a></li>\n    <li><a href=\"#shooter\" (click)=\"load('shooter')\">Shooter</a></li>\n  </ul>\n  <div class=\"buttons\" *ngIf=\"project=='demo'\">\n    <button (click)=\"send('MainObject', 'ReceiveMessageFromWeb', 'Hello from Web')\">Send Message</button>\n  </div>\n  <div class=\"buttons\" *ngIf=\"project=='shooter'\">\n    <button (click)=\"send('Game Controller', 'AddScore', 1)\">Add Score</button>\n    <button (click)=\"send('Game Controller', 'GameOver')\">End Game</button>\n  </div>\n</div>\n<app-unity #unityView></app-unity>\n"
+module.exports = "<div>\n  <h1>Angular Unity</h1>\n  <p>Example showing a unity view inside Angular</p>\n  <ul>\n    <li><a href=\"#demo\" (click)=\"load('demo')\">Communication (3MB)</a></li>\n    <li><a href=\"#shooter\" (click)=\"load('shooter')\">Game (9MB)</a></li>\n    <li><a href=\"#demo\" (click)=\"load('chest')\">Object Viewer (18MB)</a></li>\n    <li><a href=\"#chair\" (click)=\"load('chair')\">Object Loader (4MB)</a></li>\n    <li><a href=\"#forest\" (click)=\"load('forest')\">Environment (15MB)</a></li>\n  </ul>\n  <div class=\"buttons\" *ngIf=\"project=='demo'\">\n    <button (click)=\"send('MainObject', 'ReceiveMessageFromWeb', 'Hello from Web')\">Send Message</button>\n  </div>\n  <div class=\"buttons\" *ngIf=\"project=='shooter'\">\n    <button (click)=\"send('Game Controller', 'AddScore', 1)\">Add Score</button>\n    <button (click)=\"send('Game Controller', 'GameOver')\">End Game</button>\n  </div>\n  <div class=\"buttons\" *ngIf=\"project=='chair'\">\n    <button (click)=\"send('ObjController', 'LoadWeb', 'http://localhost:4200/assets/chair/StreamingAssets/Chair.obj')\">Load Chair</button>\n  </div>\n  <div class=\"buttons\" *ngIf=\"project=='forest'\">\n    <button (click)=\"send('Main Camera', 'SetGravity', 1)\">Low Gravity</button>\n    <button (click)=\"send('Main Camera', 'SetGravity', 10)\">Normal Gravity</button>\n    <button (click)=\"send('Main Camera', 'SetGravity', 80)\">High Gravity</button>\n  </div>\n</div>\n<app-unity #unityView></app-unity>\n"
 
 /***/ }),
 
@@ -202,7 +202,7 @@ function UnityProgress(gameInstance, progress) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".unity-container,\n.unity-container canvas {\n    background-color: #000;\n    height: 100%;\n    margin: auto;\n    min-height: 56.25vw;\n    width: 100%;\n}\n"
+module.exports = ".unity-container,\n.unity-container canvas {\n    background-color: #000;\n    height: 600px;\n    margin: auto !important;\n    width: 960px;\n}\n"
 
 /***/ }),
 
