@@ -16,6 +16,7 @@
     <button (click)="send('Game Controller', 'GameOver')">End Game</button>
   </div>
   <div class="buttons" *ngIf="project=='chair'">
+    <button (click)="send('ObjController', 'LoadWeb', baseUrl + '/assets/chair/StreamingAssets/Car.obj')">Load Car</button>
     <button (click)="send('ObjController', 'LoadWeb', baseUrl + '/assets/chair/StreamingAssets/Chair.obj')">Load Chair</button>
   </div>
   <div class="buttons" *ngIf="project=='forest'">
