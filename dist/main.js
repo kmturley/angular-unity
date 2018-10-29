@@ -41,7 +41,7 @@ module.exports = ".buttons {\n  margin-bottom: 1em;\n}\n\n.buttons button {\n  m
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <h1>Angular Unity</h1>\n  <p>Example showing a unity view inside Angular</p>\n  <ul>\n    <li><a href=\"#demo\" (click)=\"load('demo')\">Communication (3MB)</a></li>\n    <li><a href=\"#shooter\" (click)=\"load('shooter')\">Game (9MB)</a></li>\n    <li><a href=\"#demo\" (click)=\"load('chest')\">Object Viewer (18MB)</a></li>\n    <li><a href=\"#chair\" (click)=\"load('chair')\">Object Loader (4MB)</a></li>\n    <li><a href=\"#forest\" (click)=\"load('forest')\">Environment (15MB)</a></li>\n  </ul>\n  <div class=\"buttons\" *ngIf=\"project=='demo'\">\n    <button (click)=\"send('MainObject', 'ReceiveMessageFromWeb', 'Hello from Web')\">Send Message</button>\n  </div>\n  <div class=\"buttons\" *ngIf=\"project=='shooter'\">\n    <button (click)=\"send('Game Controller', 'AddScore', 1)\">Add Score</button>\n    <button (click)=\"send('Game Controller', 'GameOver')\">End Game</button>\n  </div>\n  <div class=\"buttons\" *ngIf=\"project=='chair'\">\n    <button (click)=\"send('ObjController', 'LoadWeb', 'http://localhost:4200/assets/chair/StreamingAssets/Chair.obj')\">Load Chair</button>\n  </div>\n  <div class=\"buttons\" *ngIf=\"project=='forest'\">\n    <button (click)=\"send('Main Camera', 'SetGravity', 1)\">Low Gravity</button>\n    <button (click)=\"send('Main Camera', 'SetGravity', 10)\">Normal Gravity</button>\n    <button (click)=\"send('Main Camera', 'SetGravity', 80)\">High Gravity</button>\n  </div>\n</div>\n<app-unity #unityView></app-unity>\n"
+module.exports = "<div>\n  <h1>Angular Unity</h1>\n  <p>Example showing a unity view inside Angular</p>\n  <ul>\n    <li><a href=\"#demo\" (click)=\"load('demo')\">Communication (3MB)</a></li>\n    <li><a href=\"#shooter\" (click)=\"load('shooter')\">Game (9MB)</a></li>\n    <li><a href=\"#demo\" (click)=\"load('chest')\">Object Viewer (18MB)</a></li>\n    <li><a href=\"#chair\" (click)=\"load('chair')\">Object Loader (4MB)</a></li>\n    <li><a href=\"#forest\" (click)=\"load('forest')\">Environment (15MB)</a></li>\n  </ul>\n  <div class=\"buttons\" *ngIf=\"project=='demo'\">\n    <button (click)=\"send('MainObject', 'ReceiveMessageFromWeb', 'Hello from Web')\">Send Message</button>\n  </div>\n  <div class=\"buttons\" *ngIf=\"project=='shooter'\">\n    <button (click)=\"send('Game Controller', 'AddScore', 1)\">Add Score</button>\n    <button (click)=\"send('Game Controller', 'GameOver')\">End Game</button>\n  </div>\n  <div class=\"buttons\" *ngIf=\"project=='chair'\">\n    <button (click)=\"send('ObjController', 'LoadWeb', baseUrl + '/assets/chair/StreamingAssets/Chair.obj')\">Load Chair</button>\n  </div>\n  <div class=\"buttons\" *ngIf=\"project=='forest'\">\n    <button (click)=\"send('Main Camera', 'SetGravity', 1)\">Low Gravity</button>\n    <button (click)=\"send('Main Camera', 'SetGravity', 10)\">Normal Gravity</button>\n    <button (click)=\"send('Main Camera', 'SetGravity', 80)\">High Gravity</button>\n  </div>\n</div>\n<app-unity #unityView></app-unity>\n"
 
 /***/ }),
 
@@ -56,6 +56,7 @@ module.exports = "<div>\n  <h1>Angular Unity</h1>\n  <p>Example showing a unity 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -66,12 +67,14 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
+    function AppComponent(platformLocation) {
+        this.baseUrl = platformLocation.location.origin;
     }
     AppComponent.prototype.load = function (name) {
         this.project = name;
-        this.unityView.loadProject("https://kmturley.github.io/angular-unity/dist/assets/" + name + "/" + name + ".json");
+        this.unityView.loadProject(this.baseUrl + "/assets/" + name + "/" + name + ".json");
     };
     AppComponent.prototype.send = function (objectName, methodName, messageValue) {
         this.unityView.sendMessageToUnity(objectName, methodName, messageValue);
@@ -85,7 +88,8 @@ var AppComponent = /** @class */ (function () {
             selector: 'app-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
-        })
+        }),
+        __metadata("design:paramtypes", [_angular_common__WEBPACK_IMPORTED_MODULE_1__["PlatformLocation"]])
     ], AppComponent);
     return AppComponent;
 }());
