@@ -1,4 +1,5 @@
-import { Component,ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { PlatformLocation } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,16 @@ import { Component,ViewChild } from '@angular/core';
 })
 export class AppComponent {
   @ViewChild('unityView') unityView;
+  baseUrl: string;
   project: string;
+
+  constructor(platformLocation: PlatformLocation) {
+    this.baseUrl = (platformLocation as any).location.origin;
+  }
 
   load(name: string) {
     this.project = name;
-    this.unityView.loadProject(`../assets/${name}/${name}.json`);
+    this.unityView.loadProject(`${this.baseUrl}/assets/${name}/${name}.json`);
   }
 
   send(objectName: string, methodName: string, messageValue: string) {
