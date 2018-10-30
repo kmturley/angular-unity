@@ -78,6 +78,7 @@ To communicate between JavaScript and Unity you need a few things:
 ## Directory structure
 
     src/                       --> Frontend sources files
+    unity-src/                 --> Unity script examples
 
 
 ## Contact
