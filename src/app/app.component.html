@@ -16,9 +16,9 @@
     <button (click)="send('Game Controller', 'GameOver')">End Game</button>
   </div>
   <div class="buttons" *ngIf="project=='loader'">
-    <button (click)="send('ObjController', 'LoadWeb', baseUrl + '/assets/loader/StreamingAssets/Car.obj')">Load Car</button>
-    <button (click)="send('ObjController', 'LoadWeb', baseUrl + '/assets/loader/StreamingAssets/Chair.obj')">Load Chair</button>
-    <button (click)="send('ObjController', 'LoadWeb', baseUrl + '/assets/loader/StreamingAssets/Cottage.obj')">Load Cottage</button>
+    <button (click)="send('ObjController', 'LoadWeb', baseUrl + 'assets/loader/StreamingAssets/Car.obj')">Load Car</button>
+    <button (click)="send('ObjController', 'LoadWeb', baseUrl + 'assets/loader/StreamingAssets/Chair.obj')">Load Chair</button>
+    <button (click)="send('ObjController', 'LoadWeb', baseUrl + 'assets/loader/StreamingAssets/Cottage.obj')">Load Cottage</button>
   </div>
   <div class="buttons" *ngIf="project=='forest'">
     <button (click)="send('Main Camera', 'SetGravity', 1)">Low Gravity</button>

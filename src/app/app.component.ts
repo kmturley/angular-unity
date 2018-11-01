@@ -12,12 +12,14 @@ export class AppComponent {
   project: string;
 
   constructor(platformLocation: PlatformLocation) {
-    this.baseUrl = (platformLocation as any).location.origin;
+    const location = (platformLocation as any).location;
+    this.baseUrl = location.origin + location.pathname;
+    console.log('baseUrl', this.baseUrl);
   }
 
   load(name: string) {
     this.project = name;
-    this.unityView.loadProject(`${this.baseUrl}/assets/${name}/${name}.json`);
+    this.unityView.loadProject(`${this.baseUrl}assets/${name}/${name}.json`);
   }
 
   send(objectName: string, methodName: string, messageValue: string) {
