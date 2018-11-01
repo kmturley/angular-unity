@@ -71,6 +71,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var AppComponent = /** @class */ (function () {
     function AppComponent(platformLocation) {
         this.baseUrl = platformLocation.location.origin;
+        console.log('baseUrl', this.baseUrl);
     }
     AppComponent.prototype.load = function (name) {
         this.project = name;

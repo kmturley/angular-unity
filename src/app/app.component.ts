@@ -13,6 +13,7 @@ export class AppComponent {
 
   constructor(platformLocation: PlatformLocation) {
     this.baseUrl = (platformLocation as any).location.origin;
+    console.log('baseUrl', this.baseUrl);
   }
 
   load(name: string) {
