@@ -19,7 +19,7 @@ export class AppComponent {
 
   load(name: string) {
     this.project = name;
-    this.unityView.loadProject(`${this.baseUrl}/assets/${name}/${name}.json`);
+    this.unityView.loadProject(`${this.baseUrl}assets/${name}/${name}.json`);
   }
 
   send(objectName: string, methodName: string, messageValue: string) {

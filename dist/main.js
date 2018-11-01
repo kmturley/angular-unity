@@ -76,7 +76,7 @@ var AppComponent = /** @class */ (function () {
     }
     AppComponent.prototype.load = function (name) {
         this.project = name;
-        this.unityView.loadProject(this.baseUrl + "/assets/" + name + "/" + name + ".json");
+        this.unityView.loadProject(this.baseUrl + "assets/" + name + "/" + name + ".json");
     };
     AppComponent.prototype.send = function (objectName, methodName, messageValue) {
         this.unityView.sendMessageToUnity(objectName, methodName, messageValue);
