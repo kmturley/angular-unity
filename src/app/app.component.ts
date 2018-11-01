@@ -12,7 +12,8 @@ export class AppComponent {
   project: string;
 
   constructor(platformLocation: PlatformLocation) {
-    this.baseUrl = (platformLocation as any).location.origin;
+    const location = (platformLocation as any).location;
+    this.baseUrl = location.origin + location.pathname;
     console.log('baseUrl', this.baseUrl);
   }
 

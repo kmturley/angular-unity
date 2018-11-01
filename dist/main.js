@@ -70,7 +70,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var AppComponent = /** @class */ (function () {
     function AppComponent(platformLocation) {
-        this.baseUrl = platformLocation.location.origin;
+        var location = platformLocation.location;
+        this.baseUrl = location.origin + location.pathname;
         console.log('baseUrl', this.baseUrl);
     }
     AppComponent.prototype.load = function (name) {
