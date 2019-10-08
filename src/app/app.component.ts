@@ -13,7 +13,7 @@ export class AppComponent {
 
   constructor(platformLocation: PlatformLocation) {
     const location = (platformLocation as any).location;
-    this.baseUrl = location.origin + location.pathname;
+    this.baseUrl = location.origin + location.pathname.replace('index.html', '');
     console.log('baseUrl', this.baseUrl);
   }
 
