@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UnityLoader } from './UnityLoader.js';
-import { UnityProgress } from './UnityProgress.js';
 
 declare var window: any;
 
@@ -18,8 +16,6 @@ export class UnityComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    window['UnityLoader'] = UnityLoader;
-    window['UnityProgress'] = UnityProgress;
     window['receiveMessageFromUnity'] = this.receiveMessageFromUnity;
     if (this.appLocation) {
       this.loadProject(this.appLocation);
@@ -27,7 +23,7 @@ export class UnityComponent implements OnInit {
   }
 
   public loadProject(path) {
-    this.unityInstance = UnityLoader.instantiate('unityContainer', path);
+    this.unityInstance = window['UnityLoader'].instantiate('unityContainer', path);
   }
 
   public sendMessageToUnity(objectName: string, methodName: string, messageValue: string) {

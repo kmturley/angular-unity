@@ -1,12 +1,11 @@
 <div>
   <h1>Angular Unity</h1>
-  <p>Example showing a unity view inside Angular</p>
+  <p>Example showing a Unity view inside Angular</p>
   <ul>
     <li><a href="#demo" (click)="load('demo')">Communication (3MB)</a></li>
     <li><a href="#shooter" (click)="load('shooter')">Game (9MB)</a></li>
     <li><a href="#demo" (click)="load('chest')">Object Viewer (18MB)</a></li>
     <li><a href="#loader" (click)="load('loader')">Object Loader (4MB)</a></li>
-    <li><a href="#forest" (click)="load('forest')">Environment (15MB)</a></li>
   </ul>
   <div class="buttons" *ngIf="project=='demo'">
     <button (click)="send('MainObject', 'ReceiveMessageFromWeb', 'Hello from Web')">Send Message</button>
@@ -19,11 +18,6 @@
     <button (click)="send('ObjController', 'LoadWeb', baseUrl + 'assets/loader/StreamingAssets/Car.obj')">Load Car</button>
     <button (click)="send('ObjController', 'LoadWeb', baseUrl + 'assets/loader/StreamingAssets/Chair.obj')">Load Chair</button>
     <button (click)="send('ObjController', 'LoadWeb', baseUrl + 'assets/loader/StreamingAssets/Cottage.obj')">Load Cottage</button>
-  </div>
-  <div class="buttons" *ngIf="project=='forest'">
-    <button (click)="send('Main Camera', 'SetGravity', 1)">Low Gravity</button>
-    <button (click)="send('Main Camera', 'SetGravity', 10)">Normal Gravity</button>
-    <button (click)="send('Main Camera', 'SetGravity', 80)">High Gravity</button>
   </div>
 </div>
 <app-unity #unityView></app-unity>
