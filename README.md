@@ -1,7 +1,7 @@
 # angular-unity
 
 Example Angular and Unity integration using:
-* Unity
+* Unity 2019.3.14f1
 * Angular 6.1.x
 
 ## Installation
@@ -74,7 +74,16 @@ To communicate between JavaScript and Unity you need a few things:
 5) Embed your generated files using the reusable Angular component:
 
     <app-unity appLocation="../assets/demo/demo.json"></app-unity>
-    
+
+
+## Updating Unity
+
+If you update Unity then you'll also needs to update the Unity JavaScript files to match. Publish a WebGL project and copy the new JavaScript files into the angular src folder here:
+
+    ./src/assets/UnityLoader.js
+    ./src/assets/UnityProgress.js
+
+
 ## Directory structure
 
     src/                       --> Frontend sources files
