@@ -2,7 +2,7 @@
 
 Example Angular and Unity integration using:
 * Unity 2019.3.14f1
-* Angular 6.1.x
+* Angular 12.0.x
 
 ## Installation
 

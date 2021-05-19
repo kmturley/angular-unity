@@ -4,12 +4,12 @@ import { PlatformLocation } from '@angular/common';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @ViewChild('unityView') unityView;
-  baseUrl: string;
-  project: string;
+  @ViewChild('unityView') unityView: any = null;
+  baseUrl: string = 'http://localhost:4200/';
+  project: string = window.location.hash.replace('#', '');
 
   constructor(platformLocation: PlatformLocation) {
     const location = (platformLocation as any).location;
@@ -22,7 +22,7 @@ export class AppComponent {
     this.unityView.loadProject(`${this.baseUrl}assets/${name}/${name}.json`);
   }
 
-  send(objectName: string, methodName: string, messageValue: string) {
+  send(objectName: string, methodName: string, messageValue?: any) {
     this.unityView.sendMessageToUnity(objectName, methodName, messageValue);
   }
 }
