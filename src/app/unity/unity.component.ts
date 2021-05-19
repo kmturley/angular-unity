@@ -5,13 +5,13 @@ declare var window: any;
 @Component({
   selector: 'app-unity',
   templateUrl: './unity.component.html',
-  styleUrls: ['./unity.component.css']
+  styleUrls: ['./unity.component.scss']
 })
 export class UnityComponent implements OnInit {
   unityInstance: any;
-  @Input() appLocation: String;
-  @Input() appWidth: String;
-  @Input() appHeight: String;
+  @Input() appLocation: string = '../assets/demo/demo.json';
+  @Input() appWidth: string = '800';
+  @Input() appHeight: string = '600';
 
   constructor() { }
 
@@ -22,7 +22,7 @@ export class UnityComponent implements OnInit {
     }
   }
 
-  public loadProject(path) {
+  public loadProject(path: string) {
     this.unityInstance = window['UnityLoader'].instantiate('unityContainer', path);
   }
 
